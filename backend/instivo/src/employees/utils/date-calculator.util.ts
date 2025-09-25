@@ -10,9 +10,9 @@ export class DateCalculatorUtil {
   static calcularTempoTrabalho(dataAdmissao: Date, dataFinal?: Date): TempoTrabalho {
     const inicio = DateTime.fromJSDate(dataAdmissao);
     const fim = dataFinal ? DateTime.fromJSDate(dataFinal) : DateTime.now();
-    
+
     const diff = fim.diff(inicio, ['years', 'months', 'days']);
-    
+
     return {
       anos: Math.floor(diff.years),
       meses: Math.floor(diff.months % 12),
@@ -21,10 +21,10 @@ export class DateCalculatorUtil {
   }
 
   static validarDataAdmissao(data: string | Date): boolean {
-    const dateTime = typeof data === 'string' 
-      ? DateTime.fromISO(data) 
+    const dateTime = typeof data === 'string'
+      ? DateTime.fromISO(data)
       : DateTime.fromJSDate(data);
-    
+
     return dateTime.isValid && dateTime <= DateTime.now().endOf('day');
   }
 
