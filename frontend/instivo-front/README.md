@@ -1,73 +1,116 @@
-# React + TypeScript + Vite
+# Tela de Listagem de Funcionários
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Funcionalidades Implementadas
 
-Currently, two official plugins are available:
+### Criação de Registros
+- **Formulario**: Data de admissão utilizando calendario para marcacão de data + campo para registrar salário bruto
+- **Formatação**: Datas em formato brasileiro (dd/MM/yyyy) e valores monetários em Real (R$)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![FORMULARIO](https://i.ibb.co/03M448N/Captura-de-Tela-2025-09-25-a-s-14-59-12.png)
 
-## React Compiler
+### Tabela de Registros
+- **Colunas**: ID, Data de Admissão, Salário Bruto, Anos, Meses, Dias, Salário + 35%
+- **Ordenação**: Clique nos headers das colunas para ordenar (Data de Admissão, Salário Bruto, Salário + 35%)
+- **Formatação**: Datas em formato brasileiro (dd/MM/yyyy) e valores monetários em Real (R$)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![TABELA](https://i.ibb.co/spyjwN73/Captura-de-Tela-2025-09-25-a-s-14-59-38.png)
 
-## Expanding the ESLint configuration
+###  Filtros Avançados
+- **Faixa de Salário**: Filtro por salário mínimo e máximo
+- **Período de Admissão**: Seleção de data range com calendário
+- **Registros por Página**: 10, 25, 50 ou 100 registros
+- **Aplicação**: Botões para aplicar ou limpar filtros
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![filtro](https://i.ibb.co/zWrVK6fc/Captura-de-Tela-2025-09-25-a-s-15-00-16.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+###  Paginação
+- **Navegação**: Anterior/Próximo com numeração de páginas
+- **Informações**: Mostra quantos registros estão sendo exibidos
+- **Responsiva**: Funciona bem em desktop e mobile
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![filtro](https://i.ibb.co/7NzT07fB/Captura-de-Tela-2025-09-25-a-s-15-00-02.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+###  Busca por ID
+- **Modal**: Interface dedicada para busca por ID específico
+- **Detalhes**: Exibe todas as informações do funcionário encontrado
+- **Tratamento de Erro**: Mensagem amigável quando não encontrado
+
+![TABELA](https://i.ibb.co/1JdhJ5s5/Captura-de-Tela-2025-09-25-a-s-14-59-23.png)
+
+###  Gerenciamento de Estado (react context)
+- **Store Centralizado**: `useEmployeeStore` gerencia todo o estado
+- **Ações Disponíveis**:
+  - `fetchRecords()`: Busca registros com filtros
+  - `fetchById(id)`: Busca por ID específico
+  - `setFilters(filters)`: Atualiza filtros
+  - `setPage(page)`: Muda página
+  - `setSort(column, order)`: Define ordenação
+
+###  Interface (shadcn/ui)
+- **Componentes**: Table, Pagination, Dialog, Select, Input, Button, Calendar
+- **Design**: Interface limpa e responsiva
+- **Loading States**: Spinners e skeletons durante carregamento
+- **Error Handling**: Mensagens de erro amigáveis
+
+##  Como Usar
+
+### 1. Iniciar o Backend
+```bash
+cd backend/instivo
+npm run start:dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Iniciar o Frontend
+```bash
+cd frontend/instivo-front
+npm run dev
 ```
+
+### 3. Acessar a Aplicação
+- Abra http://localhost:5173
+- Use a navegação para alternar entre "Listar Funcionários" e "Cadastrar Funcionário"
+
+##  Configurações da API
+
+### Query Parameters Suportados
+- `page`: Número da página (padrão: 1)
+- `limit`: Registros por página (padrão: 10, máx: 100)
+- `sortBy`: Campo para ordenação (ex: salarioBruto, dataAdmissao)
+- `sortOrder`: Ordem (asc/desc)
+- `salarioMin/salarioMax`: Faixa de salário
+- `dataAdmissaoInicio/dataAdmissaoFim`: Período de admissão
+
+## Funcionalidades Principais
+
+### Filtros
+1. **Salário**: Digite valores mínimo e máximo
+2. **Data**: Use o calendário para selecionar período
+3. **Limite**: Escolha quantos registros ver por página
+4. **Aplicar**: Clique em "Aplicar Filtros" para executar
+5. **Limpar**: Use "Limpar" para resetar todos os filtros
+
+### Ordenação
+- Clique no header "Data de Admissão" para ordenar por data
+- Clique no header "Salário Bruto" para ordenar por salário
+- Clique no header "Salário + 35%" para ordenar pelo valor calculado
+- O ícone mostra a direção atual da ordenação
+
+### Busca por ID
+1. Clique em "Buscar por ID"
+2. Digite o ID do funcionário
+3. Clique em "Buscar" ou pressione Enter
+4. Visualize os detalhes no modal
+
+### Paginação
+- Use os botões "Anterior" e "Próximo"
+- Clique nos números das páginas
+- Veja o resumo de registros na parte inferior
+
+##  Tecnologias Utilizadas
+
+- **React 19** + **TypeScript**
+- **Zustand** para gerenciamento de estado
+- **shadcn/ui** para componentes de interface
+- **Luxon** para manipulação de datas
+- **Axios** para requisições HTTP
+- **Tailwind CSS** para estilização
