@@ -14,16 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEmployeeContext } from "@/contexts/EmployeeContext";
-
-interface Employee {
-  _id: string;
-  dataAdmissao: string;
-  salarioBruto: number;
-  anos: number;
-  meses: number;
-  dias: number;
-  salario35: number;
-}
+import type { Employee } from "@/services/api";
 
 export function SearchByIdModal() {
   const [open, setOpen] = useState(false);

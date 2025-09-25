@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { CalendarIcon, Loader2 } from "lucide-react";
+import { employeeService, type EmployeeFormData } from "@/services/api";
 import axios from "axios";
 
 import { Button } from "@/components/ui/button";
@@ -23,7 +24,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { employeeSchema, type EmployeeFormData } from "@/schemas/employee";
+import { employeeSchema } from "@/schemas/employee";
 import { cn } from "@/lib/utils";
 
 export const EmployeeRegistrationForm: React.FC = () => {
@@ -46,11 +47,7 @@ export const EmployeeRegistrationForm: React.FC = () => {
     setSubmitMessage(null);
 
     try {
-      await axios.post("http://localhost:3000/registros", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await employeeService.create(data);
       form.reset();
       setSubmitMessage({
         type: "success",

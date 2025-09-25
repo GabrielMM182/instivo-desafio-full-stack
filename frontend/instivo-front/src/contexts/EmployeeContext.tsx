@@ -1,26 +1,12 @@
 import { createContext, useContext, useReducer, useCallback } from "react";
 import type { ReactNode } from "react";
-import axios from "axios";
+import { employeeService, type Employee, type FilterParams } from "@/services/api";
 
-interface Employee {
-  _id: string;
-  dataAdmissao: string;
-  salarioBruto: number;
-  anos: number;
-  meses: number;
-  dias: number;
-  salario35: number;
-}
-
-interface FilterState {
+interface FilterState extends FilterParams {
   page: number;
   limit: number;
   sortBy: string;
   sortOrder: "asc" | "desc";
-  salarioMin?: number;
-  salarioMax?: number;
-  dataAdmissaoInicio?: string;
-  dataAdmissaoFim?: string;
 }
 
 interface EmployeeState {
@@ -139,13 +125,7 @@ export function EmployeeProvider({ children }: EmployeeProviderProps) {
     dispatch({ type: "SET_ERROR", payload: null });
 
     try {
-      const params = Object.fromEntries(
-        Object.entries(state.filters).filter(([_, value]) => value !== undefined && value !== "")
-      );
-
-      const { data } = await axios.get("http://localhost:3000/registros", {
-        params,
-      });
+      const data = await employeeService.getAll(state.filters);
 
       dispatch({
         type: "SET_RECORDS",
@@ -169,7 +149,7 @@ export function EmployeeProvider({ children }: EmployeeProviderProps) {
 
   const fetchById = useCallback(async (id: string): Promise<Employee | null> => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/registros/${id}`);
+      const data = await employeeService.getById(id);
       return data;
     } catch (error) {
       console.error("Erro ao buscar registro por ID:", error);
