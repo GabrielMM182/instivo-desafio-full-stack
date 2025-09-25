@@ -6,6 +6,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+    app.enableCors();
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -21,7 +23,6 @@ async function bootstrap() {
     .setTitle('API de Registros de Funcionários')
     .setDescription('API para gerenciar registros de funcionários com cálculo de tempo de trabalho e adicional salarial')
     .setVersion('1.0')
-    .addTag('Registros de Funcionários', 'Endpoints para gerenciar registros de funcionários')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
@@ -39,7 +40,7 @@ async function bootstrap() {
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
   
-  console.log(`🚀 Aplicação rodando na porta ${port}`);
-  console.log(`📚 Documentação Swagger disponível em: http://localhost:${port}/api/docs`);
+  console.log(`Application is running on: http://localhost:${port}`);
+  console.log(`Swagger -> http://localhost:${port}/api/docs`);
 }
 bootstrap();
