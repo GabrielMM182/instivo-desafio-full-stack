@@ -2,6 +2,12 @@
 
 # Tela de Listagem de Funcionários
 
+A aplicação está disponível online:
+
+- **Frontend**: https://instivo-desafio-full-stack.vercel.app/
+- **API**: https://instivo-desafio.onrender.com/
+- **Documentação Swagger**: https://instivo-desafio.onrender.com/api/docs
+
 ## Funcionalidades Implementadas
 
 ### Criação de Registros
@@ -117,11 +123,49 @@ npm run dev
 - **Axios** para requisições HTTP
 - **Tailwind CSS** para estilização
 
+## Testes E2E com Cypress
+
+Os testes End-to-End foram implementados usando Cypress e cobrem os seguintes cenários:
+
+### Funcionalidades Testadas:
+
+- **Testes Básicos**: Navegação entre páginas, carregamento de componentes e submissão de formulários
+- **Validação de Formulário**: Verificação de campos obrigatórios e mensagens de erro
+- **Filtros e Paginação**: Aplicação de filtros por salário, busca por ID e navegação entre páginas
+- **Integração Completa**: Fluxo completo de cadastro → listagem → filtros
+- **Responsividade**: Testes em diferentes resoluções de tela (desktop, tablet, mobile)
+- **Acessibilidade**: Verificação de labels, foco em elementos e estrutura semântica
+
+### Comandos para executar os testes E2E:
+
+```bash
+# Executar testes E2E no modo headless
+$ npm run test:e2e
+
+# Abrir interface do Cypress para execução interativa
+$ npm run test:e2e:open
+
+# Comandos alternativos
+$ npm run cypress:run
+$ npm run cypress:open
+```
+
+**Nota**: Os testes E2E devem ser executados no diretório `frontend/instivo-front/`
+
+
 # BACKEND
 
 ## Descrição
 
 API para gerenciar registros de funcionários com cálculo automático de tempo de trabalho e adicional salarial de 35%.
+
+### Deploy
+
+A aplicação está disponível online:
+
+- **Frontend**: https://instivo-desafio-full-stack.vercel.app/
+- **API**: https://instivo-desafio.onrender.com/
+- **Documentação Swagger**: https://instivo-desafio.onrender.com/api/docs
 
 ### Funcionalidades
 
@@ -224,4 +268,3 @@ $ npm run test
 # test coverage
 $ npm run test:cov
 ```
-

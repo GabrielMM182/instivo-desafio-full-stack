@@ -2,6 +2,14 @@
 
 API para gerenciar registros de funcionários com cálculo automático de tempo de trabalho e adicional salarial de 35%.
 
+### Deploy
+
+A aplicação está disponível online:
+
+- **Frontend**: https://instivo-desafio-full-stack.vercel.app/
+- **API**: https://instivo-desafio.onrender.com/
+- **Documentação Swagger**: https://instivo-desafio.onrender.com/api/docs
+
 ### Funcionalidades
 
 - Cálculo automático de anos, meses e dias desde a data de admissão
@@ -103,4 +111,3 @@ $ npm run test
 # test coverage
 $ npm run test:cov
 ```
-
