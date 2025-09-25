@@ -8,11 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useEmployeeStore } from "@/stores/useEmployeeStore";
+import { useEmployeeContext } from "@/contexts/EmployeeContext";
 import { cn } from "@/lib/utils";
 
 export function FiltersBar() {
-  const { filters, setFilters, clearFilters, fetchRecords } = useEmployeeStore();
+  const { filters, setFilters, clearFilters, fetchRecords } = useEmployeeContext();
   const [localFilters, setLocalFilters] = useState({
     salarioMin: filters.salarioMin?.toString() || "",
     salarioMax: filters.salarioMax?.toString() || "",

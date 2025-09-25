@@ -6,10 +6,10 @@ import { EmployeeTable } from "@/components/EmployeeTable";
 import { EmployeePagination } from "@/components/EmployeePagination";
 import { SearchByIdModal } from "@/components/SearchByIdModal";
 import { Button } from "@/components/ui/button";
-import { useEmployeeStore } from "@/stores/useEmployeeStore";
+import { useEmployeeContext } from "@/contexts/EmployeeContext";
 
 export function EmployeeListPage() {
-  const { fetchRecords, error, clearError, total } = useEmployeeStore();
+  const { fetchRecords, error, clearError, total } = useEmployeeContext();
 
   useEffect(() => {
     fetchRecords();

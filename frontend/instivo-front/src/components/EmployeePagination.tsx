@@ -7,10 +7,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { useEmployeeStore } from "@/stores/useEmployeeStore";
+import { useEmployeeContext } from "@/contexts/EmployeeContext";
 
 export function EmployeePagination() {
-  const { filters, total, setPage, fetchRecords } = useEmployeeStore();
+  const { filters, total, setPage, fetchRecords } = useEmployeeContext();
   
   const totalPages = Math.ceil(total / filters.limit);
   const currentPage = filters.page;

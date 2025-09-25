@@ -10,10 +10,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { useEmployeeStore } from "@/stores/useEmployeeStore";
+import { useEmployeeContext } from "@/contexts/EmployeeContext";
 
 export function EmployeeTable() {
-  const { records, loading, filters, setSort, fetchRecords } = useEmployeeStore();
+  const { records, loading, filters, setSort, fetchRecords } = useEmployeeContext();
 
   const handleSort = (column: string) => {
     setSort(column);
@@ -72,6 +72,7 @@ export function EmployeeTable() {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead>ID</TableHead>
             <TableHead>
               <Button
                 variant="ghost"
@@ -110,6 +111,7 @@ export function EmployeeTable() {
         <TableBody>
           {records.map((record) => (
             <TableRow key={record._id}>
+              <TableCell className="font-mono text-xs">{record._id}</TableCell>
               <TableCell>{formatDate(record.dataAdmissao)}</TableCell>
               <TableCell>{formatCurrency(record.salarioBruto)}</TableCell>
               <TableCell>{record.anos}</TableCell>

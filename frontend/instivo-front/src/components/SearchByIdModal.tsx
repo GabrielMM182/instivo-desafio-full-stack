@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useEmployeeStore } from "@/stores/useEmployeeStore";
+import { useEmployeeContext } from "@/contexts/EmployeeContext";
 
 interface Employee {
   _id: string;
@@ -32,7 +32,7 @@ export function SearchByIdModal() {
   const [employee, setEmployee] = useState<Employee | null>(null);
   const [notFound, setNotFound] = useState(false);
   
-  const { fetchById } = useEmployeeStore();
+  const { fetchById } = useEmployeeContext();
 
   const handleSearch = async () => {
     if (!searchId.trim()) return;
