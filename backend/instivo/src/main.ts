@@ -32,10 +32,6 @@ async function bootstrap() {
       displayRequestDuration: true,
     },
   });
-  app.enableCors({
-    origin: process.env.NODE_ENV === 'production' ? false : true,
-    credentials: true,
-  });
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
