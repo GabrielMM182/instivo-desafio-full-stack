@@ -40,48 +40,4 @@ export class CreateRegistroDto {
   @Min(1320, { message: 'Salário bruto deve ser no mínimo R$ 1.320,00' })
   @Max(50000, { message: 'Salário bruto deve ser no máximo R$ 50.000,00' })
   salarioBruto: number;
-
-  @ApiProperty({
-    description: 'Anos de trabalho',
-    example: 2,
-    minimum: 0,
-  })
-  @IsNotEmpty({ message: 'Anos é obrigatório' })
-  @IsNumber({}, { message: 'Anos deve ser um número' })
-  @Min(0, { message: 'Anos deve ser no mínimo 0' })
-  anos: number;
-
-  @ApiProperty({
-    description: 'Meses de trabalho',
-    example: 6,
-    minimum: 0,
-    maximum: 11,
-  })
-  @IsNotEmpty({ message: 'Meses é obrigatório' })
-  @IsNumber({}, { message: 'Meses deve ser um número' })
-  @Min(0, { message: 'Meses deve ser no mínimo 0' })
-  @Max(11, { message: 'Meses deve ser no máximo 11' })
-  meses: number;
-
-  @ApiProperty({
-    description: 'Dias de trabalho',
-    example: 15,
-    minimum: 0,
-    maximum: 30,
-  })
-  @IsNotEmpty({ message: 'Dias é obrigatório' })
-  @IsNumber({}, { message: 'Dias deve ser um número' })
-  @Min(0, { message: 'Dias deve ser no mínimo 0' })
-  @Max(30, { message: 'Dias deve ser no máximo 30' })
-  dias: number;
-
-  @ApiProperty({
-    description: 'Salário com adicional de 35%',
-    example: 6750.00,
-    minimum: 0,
-  })
-  @IsNotEmpty({ message: 'Salário 35% é obrigatório' })
-  @IsNumber({}, { message: 'Salário 35% deve ser um número' })
-  @IsPositive({ message: 'Salário 35% deve ser positivo' })
-  salario35: number;
 }

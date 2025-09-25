@@ -86,11 +86,7 @@ export class CreateRegistroAutoDto {
   @IsPositive({ message: 'Salário 35% deve ser positivo' })
   salario35?: number;
 
-  /**
-   * Método para calcular valores automaticamente
-   */
   calcularValoresAutomaticos(): void {
-    // Calcular tempo de trabalho se não informado
     if (this.anos === undefined || this.meses === undefined || this.dias === undefined) {
       const tempoTrabalho = DateCalculatorUtil.calcularTempoTrabalho(this.dataAdmissao);
       this.anos = this.anos ?? tempoTrabalho.anos;
@@ -98,7 +94,6 @@ export class CreateRegistroAutoDto {
       this.dias = this.dias ?? tempoTrabalho.dias;
     }
 
-    // Calcular salário com 35% se não informado
     if (this.salario35 === undefined) {
       this.salario35 = this.salarioBruto * 1.35;
     }

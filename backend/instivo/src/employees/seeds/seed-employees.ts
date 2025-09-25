@@ -80,8 +80,8 @@ async function populateEmployeeSchema() {
 
     const employeesCreated = await employeeModel.insertMany(registerExemple);
 
-    console.log(`✅ ${employeesCreated.length} employees created successfully!`);
-    console.log('📊 Inserted data:');
+    console.log(`${employeesCreated.length} employees created successfully!`);
+    console.log('Inserted data:');
 
     employeesCreated.forEach((employee, index) => {
         console.log(`${index + 1}. Date: ${DateTime.fromJSDate(employee.dataAdmissao).toFormat('dd/MM/yyyy')} | Salary: R$ ${employee.salarioBruto} | Time: ${employee.anos}y ${employee.meses}m ${employee.dias}d`);
@@ -92,10 +92,10 @@ async function populateEmployeeSchema() {
 
 populateEmployeeSchema()
     .then(() => {
-        console.log('🎉 Database population completed!');
+        console.log('Seed completed!');
         process.exit(0);
     })
     .catch((error) => {
-        console.error('❌ Error populating database:', error);
+        console.error('Seed database:', error);
         process.exit(1);
     });

@@ -1,8 +1,8 @@
 import { IsOptional, IsNumber, IsDateString, Min, Max } from 'class-validator';
-import { Transform, Type } from 'class-transformer';
+import { Type } from 'class-transformer';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 
-export class QueryRegistroDto {
+export class QueryEmployeesDto {
   @ApiPropertyOptional({
     description: 'Número da página',
     example: 1,
@@ -36,9 +36,9 @@ export class QueryRegistroDto {
   })
   @IsOptional()
   @Type(() => Number)
-  @IsNumber({}, { message: 'MinSalary deve ser um número' })
-  @Min(0, { message: 'MinSalary deve ser no mínimo 0' })
-  minSalary?: number;
+  @IsNumber({}, { message: 'salarioMin deve ser um número' })
+  @Min(0, { message: 'salarioMin deve ser no mínimo 0' })
+  salarioMin?: number;
 
   @ApiPropertyOptional({
     description: 'Salário máximo para filtro',
@@ -47,25 +47,25 @@ export class QueryRegistroDto {
   })
   @IsOptional()
   @Type(() => Number)
-  @IsNumber({}, { message: 'MaxSalary deve ser um número' })
-  @Min(0, { message: 'MaxSalary deve ser no mínimo 0' })
-  maxSalary?: number;
+  @IsNumber({}, { message: 'salarioMax deve ser um número' })
+  @Min(0, { message: 'salarioMax deve ser no mínimo 0' })
+  salarioMax?: number;
 
   @ApiPropertyOptional({
-    description: 'Data inicial para filtro (formato: YYYY-MM-DD)',
-    example: '2023-01-01',
+    description: 'Data de admissão inicial para filtro (formato: YYYY-MM-DD)',
+    example: '2022-01-01',
   })
   @IsOptional()
-  @IsDateString({}, { message: 'FromDate deve ser uma data válida (YYYY-MM-DD)' })
-  fromDate?: string;
+  @Type(() => Date)
+  dataAdmissaoInicio?: Date;
 
   @ApiPropertyOptional({
-    description: 'Data final para filtro (formato: YYYY-MM-DD)',
-    example: '2023-12-31',
+    description: 'Data de admissão final para filtro (formato: YYYY-MM-DD)',
+    example: '2024-12-31',
   })
   @IsOptional()
-  @IsDateString({}, { message: 'ToDate deve ser uma data válida (YYYY-MM-DD)' })
-  toDate?: string;
+  @Type(() => Date)
+  dataAdmissaoFim?: Date;
 
   @ApiPropertyOptional({
     description: 'Campo para ordenação',
@@ -82,4 +82,5 @@ export class QueryRegistroDto {
   })
   @IsOptional()
   sortOrder?: 'asc' | 'desc' = 'desc';
+
 }
