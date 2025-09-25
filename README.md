@@ -21,7 +21,7 @@ A aplicação está disponível online:
 - **Ordenação**: Clique nos headers das colunas para ordenar (Data de Admissão, Salário Bruto, Salário + 35%)
 - **Formatação**: Datas em formato brasileiro (dd/MM/yyyy) e valores monetários em Real (R$)
 
-![TABELA](https://i.ibb.co/spyjwN73/Captura-de-Tela-2025-09-25-a-s-14-59-38.png)
+![TABELA](https://i.ibb.co/cSgV0rVd/Captura-de-Tela-2025-09-25-a-s-18-50-13.png)
 
 ###  Filtros Avançados
 - **Faixa de Salário**: Filtro por salário mínimo e máximo
@@ -36,7 +36,7 @@ A aplicação está disponível online:
 - **Informações**: Mostra quantos registros estão sendo exibidos
 - **Responsiva**: Funciona bem em desktop e mobile
 
-![filtro](https://i.ibb.co/7NzT07fB/Captura-de-Tela-2025-09-25-a-s-15-00-02.png)
+![filtro](https://i.ibb.co/ShPx7Sy/Captura-de-Tela-2025-09-25-a-s-18-50-30.png)
 
 ###  Busca por ID
 - **Modal**: Interface dedicada para busca por ID específico
