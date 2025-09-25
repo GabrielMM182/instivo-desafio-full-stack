@@ -35,22 +35,6 @@ export class EmployeesController {
   @ApiBody({
     type: CreateRegistroDto,
     description: 'Dados do funcionário para criar registro',
-    examples: {
-      exemplo1: {
-        summary: 'Funcionário com 2 anos de trabalho',
-        value: {
-          dataAdmissao: '2022-01-15',
-          salarioBruto: 5000.00,
-        },
-      },
-      exemplo2: {
-        summary: 'Funcionário recém contratado',
-        value: {
-          dataAdmissao: '2024-11-01',
-          salarioBruto: 3500.00,
-        },
-      },
-    },
   })
   @ApiResponse({
     status: 201,
